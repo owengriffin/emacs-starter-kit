@@ -76,4 +76,8 @@
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
+;; Ensure that control-3 inserts the hash key
+(global-unset-key (kbd "C-3"))
+(global-set-key (kbd "C-3") '(lambda() (interactive) (insert-string "#")))
+
 ;;; init.el ends here
